@@ -2,9 +2,20 @@ firebase.initializeApp({
     messagingSenderId: '469993071110'
 });
 
-var messaging = firebase.messaging();
+if (
+    'Notification' in window &&
+    'serviceWorker' in navigator &&
+    'localStorage' in window &&
+    'fetch' in window &&
+    'postMessage' in window
+) {
 
-console.log(messaging);
+    var messaging = firebase.messaging();
+    console.log('sfsd', Notification.permission);
+    console.log(messaging);
+}
+
+
 
 /*var bt_register = $('#register');
 var bt_delete = $('#delete');
