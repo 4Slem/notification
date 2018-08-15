@@ -4,24 +4,19 @@ firebase.initializeApp({
 
 var messaging = firebase.messaging();
 
-function getToken() {
-    messaging.requestPermission()
-        .then(function() {
-            messaging.getToken()
-                .then(function(currentToken) {
-                    console.log(currentToken);
-                })
-                .catch(function(error) {
+messaging.onTokenRefresh(function() {
+    messaging.getToken().then(function(refreshedToken) {
+        console.log('Token refreshed.');
 
-                });
-        })
-        .catch(function(error) {
-            showError('Unable to get permission to notify', error);
-        });
-}
+        setTokenSentToServer(false);
 
-getToken();
+        sendTokenToServer(refreshedToken);
 
+    }).catch(function(err) {
+        console.log('Unable to retrieve refreshed token ', err);
+        showToken('Unable to retrieve refreshed token ', err);
+    });
+});
 
 /*var bt_register = $('#register');
 var bt_delete = $('#delete');
