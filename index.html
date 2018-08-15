@@ -13,6 +13,35 @@
 <body>
 
 
+<script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA-n2aeWJ67yo6ybG4KbpRscvjHbjeTbuo",
+    authDomain: "notification-dee28.firebaseapp.com",
+    databaseURL: "https://notification-dee28.firebaseio.com",
+    projectId: "notification-dee28",
+    storageBucket: "notification-dee28.appspot.com",
+    messagingSenderId: "179224653376"
+  };
+  firebase.initializeApp(config);
+
+  var messaging = firebase.messaging();
+  getToken();
+  function getToken() {
+    messaging.requestPermission()
+        .then(function() {
+            messaging.getToken()
+                .then(function(currentToken) {
+                    console.log(currentToken);
+                })
+                .catch(function(error) {
+                });
+        })
+        .catch(function(error) {
+        });
+}
+</script>
+
 </body>
 </html>
-<script src="app.js"></script>
