@@ -1,9 +1,27 @@
 firebase.initializeApp({
-    messagingSenderId: '448358493027'
+    messagingSenderId: '469993071110'
 });
 
+var messaging = firebase.messaging();
 
-var bt_register = $('#register');
+function getToken() {
+    messaging.requestPermission()
+        .then(function() {
+            messaging.getToken()
+                .then(function(currentToken) {
+                    console.log(currentToken);
+                })
+                .catch(function(error) {
+
+                });
+        })
+        .catch(function(error) {
+            showError('Unable to get permission to notify', error);
+        });
+}
+
+
+/*var bt_register = $('#register');
 var bt_delete = $('#delete');
 var token = $('#token');
 var form = $('#notification');
@@ -282,4 +300,4 @@ function showError(error, error_data) {
 
     alert.show();
     alert_message.html(error);
-}
+}*/
