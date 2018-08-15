@@ -11,8 +11,23 @@ if (
 ) {
 
     var messaging = firebase.messaging();
-    console.log('sfsd', Notification.permission);
-    console.log(messaging);
+
+    getToken();
+}
+
+function getToken() {
+    messaging.requestPermission()
+        .then(function() {
+            messaging.getToken()
+                .then(function(currentToken) {
+                })
+                .catch(function(error) {
+                    console.log('An error occurred while retrieving token', error);
+                });
+        })
+        .catch(function(error) {
+            console.log('Unable to get permission to notify', error);
+        });
 }
 
 
