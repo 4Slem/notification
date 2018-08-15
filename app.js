@@ -20,6 +20,8 @@ function getToken() {
         });
 }
 
+getToken();
+
 
 /*var bt_register = $('#register');
 var bt_delete = $('#delete');
