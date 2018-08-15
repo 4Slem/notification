@@ -1,4 +1,4 @@
-navigator.serviceWorker.register('serviceworker.js').then(
+navigator.serviceWorker.register('firebase-messaging-sw.js').then(
     function(serviceWorkerRegistration) {
       serviceWorkerRegistration.pushManager.subscribe().then(
         function(pushSubscription) {
