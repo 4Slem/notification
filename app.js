@@ -4,19 +4,7 @@ firebase.initializeApp({
 
 var messaging = firebase.messaging();
 
-messaging.onTokenRefresh(function() {
-    messaging.getToken().then(function(refreshedToken) {
-        console.log('Token refreshed.');
-
-        setTokenSentToServer(false);
-
-        sendTokenToServer(refreshedToken);
-
-    }).catch(function(err) {
-        console.log('Unable to retrieve refreshed token ', err);
-        showToken('Unable to retrieve refreshed token ', err);
-    });
-});
+console.log(messaging);
 
 /*var bt_register = $('#register');
 var bt_delete = $('#delete');
